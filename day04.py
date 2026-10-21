@@ -1,4 +1,5 @@
-###################################### 1 STRING IS A IMMUTABLE 
+# TOPIC 1: STRING IS A IMMUTABLE  >>>>>>>>>>>>>>>>>>> 
+
 # string concatination and find the length of string 
 
 # word='python'
@@ -9,7 +10,10 @@
 
 # print(word[2]) # find position of the value through indexing 
 
-############################## string slicing
+#################################################################
+
+# TOPIC 2: STRING SLICING  >>>>>>>>>>>>>>>>>>> 
+
 # str='python'
 # store=str[2:4]
 # print(store)
@@ -17,7 +21,11 @@
 # ###########
 # store=str[2:]
 # print(store)
+
 ################################ F String
+
+# TOPIC 3: F STRING  >>>>>>>>>>>>>>>>>>> 
+
 # a=5
 # b=10
 # sum=a+b
