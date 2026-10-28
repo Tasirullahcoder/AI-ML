@@ -1,16 +1,13 @@
 # AI/ML Learning with Python
 
-A structured learning journey in **Artificial Intelligence (AI), Machine Learning (ML), and Python programming**, starting with fundamental programming concepts and progressing toward practical AI/ML projects.
-
-This repository contains my daily Python practice, code examples, exercises, and learning milestones as I build a strong foundation for AI and Machine Learning.
+This repository documents my learning journey in Python, Artificial Intelligence (AI), and Machine Learning (ML). It contains daily coding practice, examples, and exercises.
 
 ## 🎯 Objectives
 
-- Develop a strong foundation in Python programming.
-- Understand core programming concepts through hands-on practice.
-- Learn Python libraries used in data science and machine learning.
-- Explore AI/ML algorithms and practical applications.
-- Build projects that demonstrate my learning and problem-solving skills.
+- Learn Python programming from basic to advanced concepts.
+- Build a strong foundation in AI and Machine Learning.
+- Practice coding and problem-solving.
+- Develop practical AI/ML projects.
 
 ## 📚 Topics Covered
 
@@ -23,9 +20,9 @@ This repository contains my daily Python practice, code examples, exercises, and
 - Conditional statements (`if`, `elif`, `else`)
 - `match-case` statements
 - Loops (`for` and `while`)
-- `break` and `continue` statements
+- `break` and `continue`
 - Functions
-- The `range()` function
+- `range()` function
 
 ### 2. String Operations
 
@@ -40,56 +37,69 @@ This repository contains my daily Python practice, code examples, exercises, and
 - Dictionaries
 - Sets
 
+### 4. Object-Oriented Programming (OOP)
+
+- Classes and objects
+- Attributes and methods
+- Constructor and `__init__()` method
+- Class and instance attributes
+- Instance methods, class methods, and static methods
+- Encapsulation
+- Inheritance and its types
+- Abstraction
+- Polymorphism
+
+### 5. File Handling
+
+- File operations
+- File modes
+- Using the `with` statement
+- Deleting files
+
+### 6. Exception Handling
+
+- Handling errors using `try` and `except`
+- Using `else` and `finally`
+- Raising exceptions using `raise`
+
+### 7. JSON Module
+
+- Introduction to JSON
+- `json.dump()` and `json.dumps()`
+- `json.load()` and `json.loads()`
+- Reading and writing JSON data
+
 ## 🛠️ Tools and Technologies
 
-- **Language:** Python
-- **Code Editor:** Visual Studio Code
-- **Version Control:** Git
-- **Repository Hosting:** GitHub
-
-## 📁 Repository Structure
-
-The repository is organized into Python files containing practice exercises and examples from different learning sessions.
-
-```text
-AI-ML/
-├── README.md
-├── day01.py
-├── day03.py
-├── day04.py
-└── day04_data_type.py
-```
-
-_The file structure above is an example based on the files currently in the repository. Update it as you add or rename files._
+- Python
+- Visual Studio Code
+- Git
+- GitHub
 
 ## 📈 Learning Approach
 
-My learning process focuses on:
-
-1. Understanding programming concepts.
-2. Writing and running code in VS Code.
-3. Practicing examples and solving exercises.
-4. Documenting important concepts with comments.
-5. Committing and pushing progress to GitHub regularly.
+1. Learn new concepts.
+2. Write and run Python code.
+3. Practice with examples and exercises.
+4. Add comments to explain important concepts.
+5. Commit and push progress to GitHub regularly.
 
 ## 🚀 Future Learning Goals
 
-- Python Object-Oriented Programming (OOP)
-- Exception handling and file handling
+- Advanced Python
 - NumPy and Pandas
 - Data preprocessing and visualization
-- Mathematics, statistics, and probability for ML
+- Mathematics and statistics for ML
 - Machine Learning algorithms
 - Deep Learning and Neural Networks
-- Generative AI, Large Language Models (LLMs), and Retrieval-Augmented Generation (RAG)
+- Generative AI and Large Language Models (LLMs)
+- Retrieval-Augmented Generation (RAG)
+- TensorFlow
+- Docker and Kubernetes
 - Practical AI/ML projects
 
-## 📌 Progress Tracking
+## 📌 Progress
 
-This repository will be updated regularly as I learn new concepts, practice Python, and work toward building real-world AI/ML applications.
+This repository is updated as I learn new Python concepts and progress toward building practical AI/ML applications.
 
 **Goal:** Learn consistently, practice daily, and turn theoretical knowledge into practical skills.
-
----
-
-_This repository is part of my ongoing AI/ML learning journey with Python._
