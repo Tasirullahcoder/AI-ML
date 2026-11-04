@@ -1,94 +1,100 @@
-# TOPIC 1: OPERATION ON FILES  and method  READ(),OPEN(),CLOSE(), >>>>>>>>>>>>>>>
 
-# f=open('sample_day06.txt','r') # r mean read file
+# ==========================================================
+# TOPIC 1: FILE OPERATIONS — OPEN(), READ(), READLINE(), CLOSE()
+# ==========================================================
 
-# data=f.readline() # mean to read one line by line 
+f = open('sample_day06.txt', 'r')  # r means read mode
 
-# data=f.read()       # mean read all lines
+data = f.readline()  # readline() reads one line at a time
 
-# print(data)
+f = open('sample_day06.txt', 'r')
 
-# f.close()        # after perform operation closed to it  must
+data = f.read()  # read() reads all remaining content
 
-######################################################################
+print(data)
 
-# TOPIC 2: OPERATION ON FILES WRITE() >>>>>>>>>>>>>>>
+f.close()  # Close the file after performing the operation
 
-# 1 if i want to overwrite the all text  then use this one 
 
-# f=open('sample_day06.txt','w') # w mean write on file
+# ==========================================================
+# TOPIC 2: FILE OPERATION — WRITE()
+# ==========================================================
 
-# f.write('text to overrite \n the complete data')
+# 1. WRITE MODE ('w')
+# It overwrites the complete old content.
+# If the file does not exist, Python creates it.
 
+# f = open('sample_day06.txt', 'w')
+# f.write('Text to overwrite the complete data')
 # f.close()
 
-######################################################
 
-# TOPIC 3: OPERATION ON FILES WRITE() AND READ() >>>>>>>>>>>>>>>
+# ==========================================================
+# TOPIC 3: FILE OPERATIONS — APPEND ('a')
+# ==========================================================
 
-# 2 if you want to write text at the end of old text then use this one
+# 2. APPEND MODE ('a')
+# It writes new text at the end of the existing content.
 
-# f=open('sample_day06.txt','a')
-
-# data=f.write('\n i want to test just \n is it work or not')
-
-# print(data)
-
+# f = open('sample_day06.txt', 'a')
+# data = f.write('\nI want to test just\nIs it working or not?')
+# print(data)  # Returns the number of characters written
 # f.close()
 
-###############################################################
-# TOPIC 3: OPERATION ON FILES WRITE() AND READ() >>>>>>>>>>>>>>>
 
-# 3 if you want to write overrite  text then use this one
+# ==========================================================
+# TOPIC 4: WRITE AND READ MODE ('w+')
+# ==========================================================
 
-# f=open('sample_day06.txt','w+')
+# 3. w+ means write and read.
+# It deletes the old content when the file is opened.
+# Then it allows writing and reading.
 
-# data=f.write('\n i want to test just \n is it work or not')
-
+# f = open('sample_day06.txt', 'w+')
+# data = f.write('I want to test just\nIs it working or not?')
+# f.seek(0)  # Move the cursor to the beginning
 # print(f.read())
-
 # f.close()
 
-##################################################################
-# TOPIC 3: OPERATION ON FILES WRITE() AND READ() >>>>>>>>>>>>>>>
 
-# 4 if you want to write text but this text will in start point are write
+# ==========================================================
+# TOPIC 5: READ AND WRITE MODE ('r+')
+# ==========================================================
 
-#  and also read old text then use this
+# 4. r+ means read and write.
+# It does not delete the old content.
+# The file must already exist.
 
-# f=open('sample_day06.txt','r+')
-
-# data=f.write('123')
-
+# f = open('sample_day06.txt', 'r+')
+# data = f.write('123')
 # print(f.read())
-
 # f.close()
 
-##################################################################
-# TOPIC 3: OPERATION ON FILES WRITE() AND READ() >>>>>>>>>>>>>>>
 
-# 5 if you want to write text but this text will be in ending are write
+# ==========================================================
+# TOPIC 6: APPEND AND READ MODE ('a+')
+# ==========================================================
 
-# but this nothing will be read old text then use this
+# 5. a+ means append and read.
+# It writes new content at the end of the file.
+# It also allows reading.
 
-# f=open('sample_day06.txt','a+')
-
-# data=f.write('123')
-
+# f = open('sample_day06.txt', 'a+')
+# data = f.write('123')
+# f.seek(0)  # Move the cursor to the beginning for reading
 # print(f.read())
-
 # f.close()
 
-#############################################################################
-# TOPIC 3: OPERATION ON FILES WRITE() AND READ() >>>>>>>>>>>>>>>
 
-# 6 if you want to write text in other file then use this one
+# ==========================================================
+# TOPIC 7: CREATE AND WRITE IN ANOTHER FILE ('w+')
+# ==========================================================
 
-# f=open('sample_day06_2.txt','w+')
+# 6. Open another file using w+.
+# If the file does not exist, Python creates it.
 
-# data=f.write('1234567')
-
+# f = open('sample_day06_2.txt', 'w+')
+# data = f.write('1234567')
+# f.seek(0)
 # print(f.read())
-
 # f.close()
-################################################################################

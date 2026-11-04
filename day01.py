@@ -1,57 +1,95 @@
-# TOPIC : DIFFERENT OPERATORS  >>>>>>>>>>>>>>>>>>>
+"""
+Python Basics - Day 1
+Topics: Operators, Type Conversion, Input, and Conditional Statements.
 
-# # 1 artimetic operator AND also some more operator like 2 comparison, 3 assign operator,4 logical
+Run this file and choose an example from the menu.
+"""
 
-# TOPIC 1: ARTIMATIC OPERATOR  >>>>>>>>>>>>>>>>>>>
+def arithmetic_operators():
+    print("\n--- Arithmetic Operators ---")
+    a = 10
+    b = 5
 
-# a=10
-# b=5
-# print(a+b)
-# print(a-b)
-# print(a*b)
-# print(a/b) # Division
-# print(a%b)# Modular or Remender
-# print(a**a) # calculate Power
-#########################################
+    print("Addition:", a + b)
+    print("Subtraction:", a - b)
+    print("Multiplication:", a * b)
+    print("Division:", a / b)
+    print("Modulus (remainder):", a % b)
+    print("Exponentiation:", a ** b)
 
-# TOPIC 2: TYPES CONVERSION  >>>>>>>>>>>>>>>>>>>
 
-# ans1=5+10.0 # type conversion not developer convert value by force convert by python interpreter it self
-# ans2=int(5+10.0)# type coasting mean developer convert value by force 
-# print(type(ans1),ans1)
-# print(type(ans2),ans2)
-############################################
+def type_conversion():
+    print("\n--- Type Conversion ---")
 
-# TOPIC 3: INPUT  >>>>>>>>>>>>>>>>>>>
+    # Implicit conversion: Python converts the integer to a float automatically.
+    implicit_result = 5 + 10.0
 
-# if we take two number input like a=10,b=5 so it will give us 105,not 15? bcz by default input method
-#  give us is a string but we will convert into int through int() method 
+    # Explicit conversion (type casting): the programmer converts the value.
+    explicit_result = int(5 + 10.0)
 
-# User_Name=input("Enter Your Name Please")
-# User_Age=input("Enter Your Age Please")  
-# print('Your Name is :',User_Name,'Your Age Is:',User_Age )
-# print('Your Name is :',User_Name)
-# print('Your Age Is:',User_Age)
-###################################################
-# TOPIC 3: INPUT PROBLEM 1 >>>>>>>>>>>>>>>>>>>
+    print("Implicit conversion:", implicit_result, type(implicit_result))
+    print("Explicit conversion:", explicit_result, type(explicit_result))
 
-# To Calculate of Two Number and find the average of it 
-# a=int(input("Enter First Number"))
-# b=int(input("Enter Second Number"))
-# avg=(a+b)/2
-# print('Average of Two Number is: ',avg)
 
-##############################################
+def user_input():
+    print("\n--- User Information ---")
+    user_name = input("Enter your name: ")
+    user_age = input("Enter your age: ")
 
-# TOPIC 4: CONDITIONAL STATMENT    >>>>>>>>>>>>>>>>>>>
+    print(f"Your name is {user_name}. You are {user_age} years old.")
 
-# color=input('please enter  the color  ')
-# if(color=='red'):
-#     print('stop the car')
-# elif(color=='green'):
-#     print('you can go')
-# elif(color=='yellow'):
-#     print('look the road')
-# else:
-#     print('Wrong color for Trafic light  ')
-##################################################
+
+def average_of_two_numbers():
+    print("\n--- Average of Two Numbers ---")
+    first_number = float(input("Enter the first number: "))
+    second_number = float(input("Enter the second number: "))
+
+    average = (first_number + second_number) / 2
+    print("Average:", average)
+
+
+def traffic_light():
+    print("\n--- Traffic Light ---")
+    color = input("Enter a traffic light color (red, yellow, green): ").strip().lower()
+
+    if color == "red":
+        print("Stop the car.")
+    elif color == "green":
+        print("You can go.")
+    elif color == "yellow":
+        print("Look carefully and get ready to stop.")
+    else:
+        print("Invalid traffic light color.")
+
+
+def main():
+    while True:
+        print("\n========== PYTHON BASICS: DAY 1 ==========")
+        print("1. Arithmetic operators")
+        print("2. Type conversion")
+        print("3. User input")
+        print("4. Average of two numbers")
+        print("5. Conditional statements (traffic light)")
+        print("0. Exit")
+
+        choice = input("Choose an example (0-5): ").strip()
+
+        if choice == "1":
+            arithmetic_operators()
+        elif choice == "2":
+            type_conversion()
+        elif choice == "3":
+            user_input()
+        elif choice == "4":
+            average_of_two_numbers()
+        elif choice == "5":
+            traffic_light()
+        elif choice == "0":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please select a number from 0 to 5.")
+
+
+if __name__ == "__main__":
+    main()

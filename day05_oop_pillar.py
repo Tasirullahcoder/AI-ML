@@ -1,190 +1,430 @@
-# TOPICS : 1:ENCAPSULATION 2:ABSTRACTION 3:INHERITANCE 4:POLYMORPHISM >>>>>>>>>>>>>>>
 
-# TOPIC 1: ENCAPSULATION>>>>>>>>>>>>>>>
+# ============================================================
+# DAY 05 (PART 2): ADVANCED OOP CONCEPTS
+# ============================================================
+# OOP has four important concepts:
+#
+# 1. Encapsulation
+# 2. Inheritance
+# 3. Abstraction
+# 4. Polymorphism
+# ============================================================
+
+
+# ============================================================
+# TOPIC 1: ENCAPSULATION
+# ============================================================
+# Encapsulation means wrapping data (attributes) and methods
+# (functions) together inside a single class.
+#
+# It also helps control access to an object's data.
+#
+# Python has three common access conventions:
+#
+# 1. Public:
+#    Can be accessed inside and outside the class.
+#
+# 2. Protected:
+#    Written with a single underscore (_).
+#    Intended for use inside the class and its subclasses.
+#    This is a convention, not strict access restriction.
+#
+# 3. Private:
+#    Written with double underscores (__).
+#    Python uses name mangling to make direct access harder.
+# ============================================================
+
+def encapsulation():
+
+    print("\n--- ENCAPSULATION ---")
+
+    # --------------------------------------------------------
+    # 1. PUBLIC AND PROTECTED ATTRIBUTES
+    # --------------------------------------------------------
 
-# wrapping data and function into single unit
-# data hiding 
-# we some types of attributes 
-# 1 public that can access inside class and outside class & everywhere 
-# 2 protected attribute that can access class + subclass
-# 3 private attribute can access inside the class
+    class BankAccount:
+
+        def __init__(self, name, balance):
 
-# 1 protected & public attributes
+            # Public attribute:
+            # Can be accessed directly through the object.
+            self.name = name
+
+            # Protected attribute:
+            # Single underscore indicates intended internal use.
+            self._balance = balance
+
+    # Creating an object of BankAccount.
+    acc1 = BankAccount("Anwar", 100_000)
+
+    # Accessing public and protected attributes.
+    print("Name:", acc1.name)
+    print("Balance:", acc1._balance)
+
+    # --------------------------------------------------------
+    # 2. PRIVATE AND PUBLIC ATTRIBUTES
+    # --------------------------------------------------------
+
+    class BankAccount:
 
-# class BankAccount:
-#     def __init__(self,name,balance):
-#         self.name=name # public
-#         self._balance=balance # protected => we use _balance which show protected 
+        def __init__(self, name, balance):
 
-# acc1=BankAccount('anwar',100_000)
-# print(acc1.name,acc1._balance)  
+            # Public attribute.
+            self.name = name
 
-###########################################################
+            # Private attribute:
+            # Double underscore triggers name mangling.
+            self.__balance = balance
 
-# 2 private & public attributes
+        # GETTER METHOD
+        # Used to access the private attribute.
+        def get(self):
+            return self.__balance
 
-# to get or set the value of private attribute then use getter and setter function to acces val 
+        # SETTER METHOD
+        # Used to update the private attribute.
+        def set(self, new_balance):
+            self.__balance = new_balance
 
-# class BankAccount:
-#     def __init__(self,name,balance):
-#         self.name=name # public
-#         self.__balance=balance # private data mangling  we here __balance which show private
+    # Creating an object.
+    acc1 = BankAccount("Anwar", 100_000)
 
-#     def get(self): # getter
-#         # print(f'value of private attribute is {self.__balance}')
-#         return self.__balance
+    # Calling setter to update the private balance.
+    acc1.set(200_000)
 
-#     def set(self,new_balance): #setter
-#         self.__balance=new_balance
+    # Calling getter to access the updated balance.
+    print("\nName:", acc1.name)
+    print("Updated Balance:", acc1.get())
+
+
+# ============================================================
+# TOPIC 2: INHERITANCE
+# ============================================================
+# Inheritance allows a child class to reuse attributes
+# and methods from a parent (base) class.
+#
+# Benefits:
+# 1. Code reusability.
+# 2. Less code duplication.
+# 3. Better code organization.
+# ============================================================
 
-# acc1=BankAccount('anwar',100_000)
+def inheritance():
 
-# acc1.set(200_000) # setter update the balance and then print final balance
+    print("\n--- INHERITANCE ---")
 
-# print(acc1.name,acc1.get())  
-############################################################################
+    # --------------------------------------------------------
+    # 1. SINGLE-LEVEL INHERITANCE
+    # --------------------------------------------------------
 
-# TOPIC 2: INHERITANCE>>>>>>>>>>>>>>>
+    class Employee:
 
-# reusing attributes and method from a parent (base) class
+        # Parent class attributes.
+        startTime = "10am"
+        endTime = "6pm"
 
-# class Employee: # parent class
-#     startTime='10am'
-#     endTime='6pm'
-#     def change_time(self,new_time):
-#         self.startTime=new_time
+        # Parent class instance method.
+        def change_time(self, new_time):
+            self.startTime = new_time
 
-# class Teacher(Employee): # child class which inherites from employee
-#     def __init__(self,subject):
-#         self.subject=subject
+    # Teacher inherits from Employee.
+    class Teacher(Employee):
 
-# t1=Teacher('math')
+        def __init__(self, subject):
 
-# t1.change_time('9am')
+            # Instance attribute of Teacher.
+            self.subject = subject
 
-# print(t1.subject,t1.startTime,t1.endTime)
+    # Creating an object of the child class.
+    t1 = Teacher("Math")
 
-############################################################################
+    # Calling the inherited method from Employee.
+    t1.change_time("9am")
 
-# TOPIC 2: INHERITANCE TYPES >>>>>>>>>>>>>>>
+    # Accessing child and inherited parent attributes.
+    print("\nSingle-Level Inheritance:")
+    print(t1.subject, t1.startTime, t1.endTime)
 
-# 1 we have single level inheritance which we define in above
-# 2 multi level inheritance
-# 3 multi inheritance
+    # --------------------------------------------------------
+    # 2. MULTILEVEL INHERITANCE
+    # --------------------------------------------------------
+    # In multilevel inheritance:
+    # A child class inherits from another child class.
+    #
+    # Employee -> AdminStaff -> Accountant
+    #
+    # Accountant inherits from AdminStaff.
+    # AdminStaff inherits from Employee.
 
-###################### 2 Multi Level Inheritance Below #########################
+    class Employee:
 
-# class Employee: # parent class
-#     startTime='10am'
-#     endTime='6pm'
+        startTime = "10am"
+        endTime = "6pm"
 
-# class AdminStaff(Employee): 
-#     def __init__(self,role):
-#         self.role=role
+    class AdminStaff(Employee):
 
+        def __init__(self, role):
 
-# class Accountant(AdminStaff): 
-#     def __init__(self,salary,role):
-#         super().__init__(role) # with this i am calling  'adminstaff role' not a simple 
-#         self.salary=salary
+            self.role = role
 
-# acc1=Accountant(15_000,'CA')
+    class Accountant(AdminStaff):
 
-# print(acc1.role,acc1.salary,acc1.startTime,acc1.endTime)
+        def __init__(self, salary, role):
 
+            # super() calls the parent class initializer.
+            # Here it calls AdminStaff.__init__().
+            super().__init__(role)
 
-###################### 3 Multi Inheritance Below #########################
+            self.salary = salary
 
-# class Teacher: 
-#     def __init__(self,salary):
-#             self.salary=salary
+    # Creating an object of Accountant.
+    acc1 = Accountant(15_000, "CA")
 
-# class Student(): 
-#     def __init__(self,gpa):
-#         self.gpa=gpa
+    # Accessing attributes from all three classes.
+    print("\nMultilevel Inheritance:")
+    print(
+        acc1.role,
+        acc1.salary,
+        acc1.startTime,
+        acc1.endTime
+    )
 
+    # --------------------------------------------------------
+    # 3. MULTIPLE INHERITANCE
+    # --------------------------------------------------------
+    # Multiple inheritance means a child class
+    # inherits from more than one parent class.
+    #
+    # TA inherits from both Teacher and Student.
 
-# class TA(Teacher,Student): 
-#     def __init__(self,name,salary,gpa,):
-#         super().__init__(salary)  
-#         Student.__init__(self,gpa)
-#         self.name=name
+    class Teacher:
 
-# Ta1=TA('khan',20_000,3.7)
+        def __init__(self, salary):
+            self.salary = salary
 
-# print(Ta1.name,Ta1.salary,Ta1.gpa)
+    class Student:
 
-#########################################################################
+        def __init__(self, gpa):
+            self.gpa = gpa
 
-# TOPIC 3: ABSTRACTION >>>>>>>>>>>>>>>
+    class TA(Teacher, Student):
 
-# # Hiding internal detail and showing essencial features
-# # abstract class is bluprint for other clases
+        def __init__(self, name, salary, gpa):
 
-# from abc import ABC ,abstractmethod
-# class Animal :
-#     @abstractmethod
-#     def make_sound(self): # here we just initiolize fnc and define it in below.it is a bluprent
-#         pass              # pass mean initilize the fnc but empty currently
+            # Initialize Teacher's attributes.
+            super().__init__(salary)
 
-# class Lion(Animal):
-#     def make_sound(self):
-#         print('Roar')
+            # Initialize Student's attributes.
+            Student.__init__(self, gpa)
 
+            self.name = name
 
-# class Cow(Animal):
-#     def make_sound(self):
-#         print('Moa')
+    # Creating an object of TA.
+    ta1 = TA("Khan", 20_000, 3.7)
 
+    # Accessing attributes inherited from both parent classes.
+    print("\nMultiple Inheritance:")
+    print(ta1.name, ta1.salary, ta1.gpa)
 
-# lion=Lion()
-# cow=Cow()
 
-# lion.make_sound()
-# cow.make_sound()
-#################################################################################
+# ============================================================
+# TOPIC 3: ABSTRACTION
+# ============================================================
+# Abstraction means hiding internal implementation details
+# and showing only the essential features.
+#
+# An abstract class acts as a blueprint for other classes.
+#
+# We use the abc module:
+# ABC          -> To create an abstract base class.
+# abstractmethod -> To define a method that child classes
+#                   must implement.
+# ============================================================
 
-# TOPIC 4: POLYMORPHISM >>>>>>>>>>>>>>>
+def abstraction():
 
-# POLY 'many' MORPHISM 'form' => mean multiple function but same name
-# example operator overloading
-#  like " + "" it can be add two number and can also to cancatinate two string
+    print("\n--- ABSTRACTION ---")
 
-# print(1+2,'hellow'+'word')
-#####################################################
+    # Importing ABC and abstractmethod.
+    from abc import ABC, abstractmethod
 
-# TOPIC 4: TWO TYPES FUNCTION OVERRIDING & DUCK TYPING  >>>>>>>>>>>>>>>
+    # Abstract base class.
+    class Animal(ABC):
 
-# # 1 FUNCTION OVERRIDING (inheritance) redefining parent class fnc in child class fnc below given eg
+        # Abstract method.
+        # We declare the method here but do not implement it.
+        @abstractmethod
+        def make_sound(self):
+            pass
 
-# class Employee:
-#     def get_designation(self):
-#         print('designation = employee')
+    # Lion inherits from Animal.
+    class Lion(Animal):
 
-# class Teacher(Employee) :
-#     def get_designation(self):
-#             print('designation = teacher')
+        # Implementing the abstract method.
+        def make_sound(self):
+            print("Lion says: Roar")
 
-# t1=Teacher()
-# t1.get_designation()
+    # Cow inherits from Animal.
+    class Cow(Animal):
 
-# 2 DUCK TYPING ##################################
+        # Implementing the abstract method.
+        def make_sound(self):
+            print("Cow says: Moo")
 
-# # example of it .walk like a duck and quake like a duck .so both work
-# #  like same so we can give function name same bcz work both same 
+    # Creating objects of child classes.
+    lion = Lion()
+    cow = Cow()
 
+    # Calling their implemented methods.
+    lion.make_sound()
+    cow.make_sound()
 
-# class Teacher:
-#     def get_designation(self):
-#             print('designation = teacher')
+    # IMPORTANT:
+    # We cannot directly create an object of Animal
+    # because it contains an unimplemented abstract method.
+    #
+    # animal = Animal()  # This raises TypeError.
 
-# class Accountant:
-#     def get_designation(self):
-#         print('designation = accountant')
 
+# ============================================================
+# TOPIC 4: POLYMORPHISM
+# ============================================================
+# POLY means MANY.
+# MORPHISM means FORMS.
+#
+# Polymorphism means the same interface or method name
+# can behave differently in different situations.
+#
+# Examples:
+# 1. Operator Overloading.
+# 2. Method Overriding.
+# 3. Duck Typing.
+# ============================================================
 
-# t1=Teacher()
-# acc1=Accountant()
+def polymorphism():
 
-# t1.get_designation()
-# acc1.get_designation()
+    print("\n--- POLYMORPHISM ---")
+
+    # --------------------------------------------------------
+    # 1. OPERATOR OVERLOADING
+    # --------------------------------------------------------
+    # Operator overloading means the same operator
+    # performs different operations depending on data types.
+    #
+    # Example:
+    # + adds two numbers.
+    # + joins two strings.
+
+    print("\nOperator Overloading:")
+
+    print(1 + 2)
+    print("Hello " + "World")
+
+    # --------------------------------------------------------
+    # 2. METHOD OVERRIDING
+    # --------------------------------------------------------
+    # Method overriding happens when a child class
+    # defines a method with the same name as its parent class.
+    #
+    # The child class implementation is used when called
+    # through the child object's method.
+
+    class Employee:
+
+        def get_designation(self):
+            print("Designation = Employee")
+
+    class Teacher(Employee):
+
+        # Overriding the parent class method.
+        def get_designation(self):
+            print("Designation = Teacher")
+
+    # Creating an object of Teacher.
+    t1 = Teacher()
+
+    # Calls the overridden method from Teacher.
+    print("\nMethod Overriding:")
+    t1.get_designation()
+
+    # --------------------------------------------------------
+    # 3. DUCK TYPING
+    # --------------------------------------------------------
+    # Duck typing means an object's suitability depends
+    # on the methods and behavior it provides,
+    # rather than its actual class or type.
+    #
+    # Example:
+    # If two different classes have the same method name,
+    # we can call that method on objects of both classes.
+
+    class Teacher:
+
+        def get_designation(self):
+            print("Designation = Teacher")
+
+    class Accountant:
+
+        def get_designation(self):
+            print("Designation = Accountant")
+
+    # Creating objects of different classes.
+    t1 = Teacher()
+    acc1 = Accountant()
+
+    # Both objects have the same method name.
+    # Each object executes its own implementation.
+
+    print("\nDuck Typing:")
+    t1.get_designation()
+    acc1.get_designation()
+
+
+# ============================================================
+# MAIN FUNCTION: MENU-DRIVEN PROGRAM
+# ============================================================
+
+def main():
+
+    # while True keeps displaying the menu
+    # until the user chooses Exit.
+    while True:
+
+        print("\n========== DAY 05 OOP PART 2 MENU ==========")
+
+        print("1. Encapsulation")
+        print("2. Inheritance")
+        print("3. Abstraction")
+        print("4. Polymorphism")
+        print("0. Exit")
+
+        # Taking input from the user.
+        choice = input("\nSelect an option: ")
+
+        # Calling the relevant function.
+        if choice == "1":
+            encapsulation()
+
+        elif choice == "2":
+            inheritance()
+
+        elif choice == "3":
+            abstraction()
+
+        elif choice == "4":
+            polymorphism()
+
+        elif choice == "0":
+            print("Exiting Day 05 OOP Part 2. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice! Please select 0 to 4.")
+
+
+# This condition checks whether the file is being
+# executed directly.
+#
+# If it is, main() will run.
+if __name__ == "__main__":
+    main()
